@@ -1,0 +1,13 @@
+﻿CREATE TABLE [dbo].[ProductImage]
+(
+    [Id] INT NOT NULL IDENTITY,
+    [ProductNo] NVARCHAR(200) NOT NULL, 
+    [Url] NVARCHAR(500) NULL, 
+    [CreatedDate] DATETIMEOFFSET NOT NULL DEFAULT GETDATE(),
+    [CreatedBy] NVARCHAR(450) NOT NULL DEFAULT '',
+    [ModifiedDate] DATETIMEOFFSET NOT NULL DEFAULT GETDATE(),
+    [ModifiedBy] NVARCHAR(450) NOT NULL DEFAULT '', 
+
+    CONSTRAINT [PK_ProductImage] PRIMARY KEY ([Id]), 
+    CONSTRAINT [FK_ProductImage_Product] FOREIGN KEY ([ProductNo]) REFERENCES [Product]([ProductNo]) ON DELETE CASCADE, 
+)
